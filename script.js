@@ -5,8 +5,30 @@ const weatherConditionsElement = document.querySelector('weather-conditions');
 const getTemperature = document.querySelector('.forecast-temp');
 const forecastConditionsElement = document.querySelector('.forecast-conditions');
 
+const weatherData = {
+locatiion: 'New York',
+temperature: 25,
+conditions: 'Sunny',
+forecast: [
+  {
+    day: 'Day1',
+    temp: 28,
+    forecastConditions: 'Partly Cloudy'
+  }
+]
+};
 
+function updateWeatherData (weatherData) {
 
+locationNameElement.textContent = weatherData.location;
+temperatureElement.textContent = weatherData.temperature;
+weatherConditionsElement.textContent = weatherData.conditions;
+forecastTempElement.textContent = weatherData.forecast[0].temp;
+forecastTempElement.textContent = weatherData.forecast[0].forecastConditions;
+
+updateWeatherData(intialWeatherData);
+
+}
 //Add event listeners
 //Api key with users location
 //Make a get request
