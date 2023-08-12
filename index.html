@@ -6,19 +6,39 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="app">
-      <form class="Weather-form">
-        <h4>Weather App</h4>
-        <label for="location">Location</label>
-        <input
-          type="text"
-          id="location"
-          required
-          minlength="2"
-          maxlength="20"
-        />
-        <button type="submit">Get Details</button>
-      </form>
-    </div>
+    <header>
+      <h1>Weather App</h1>
+    </header>
+    <main>
+      <section class="currrent-weather">
+        <h2>Current Weather</h2>
+        <div class="weather-details">
+          <div class="location">
+            <h3>Location: <span id="location-name"> </span></h3>
+          </div>
+          <div class="temperature">
+            <h3>Temperature: <span id="temperature"> </span>C</h3>
+          </div>
+          <div class="conditions">
+            <h3>Conditioms: <span id="weather-conditions"> </span></h3>
+          </div>
+        </div>
+      </section>
+      <section class="forecast">
+        <h2>Todays-Forecast</h2>
+        <ul class="forecast-list">
+          <li class="forecast-day">
+            <h3>Day1</h3>
+            <p>Temperature:<span class="forecast-temp"> </span>C</p>
+
+            <p>Conditions: <span class="forecast-conditions"></span></p>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2023 Weather App</p>
+    </footer>
+    <script src="script.js"></script>
   </body>
 </html>
