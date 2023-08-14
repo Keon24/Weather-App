@@ -3,7 +3,7 @@ const locationNameElement = document.getElementById('#location-name');
 const temperatureElement = document.getElementById('#temperature');
 const weatherConditionsElement = document.getElementById('#weather-conditions');
 const forecastTempElements = document.querySelectorAll('.forecast-temp');
-const forecastConditionsElement = document.querySelectorAll('.forecast-conditions');
+const forecastConditionsElement = document.querySelectorA('.forecast-conditions');
 const errorElement = document.getElementById('error-message');
 const fetchButton = document.getElementById('search-button');
 const unitToggle = document.getElementById('unit-toggle');
@@ -18,6 +18,26 @@ forecast: [
     day: 'Day1',
     temp: 28,
     forecastConditions: 'Partly Cloudy'
+  },
+  {
+    day: 'Day2',
+    temp: 28,
+    forecastConditions: 'sunny'
+  },
+  {
+    day: 'Day3',
+    temp: 28,
+    forecastConditions: 'Partly Cloudy'
+  },
+  {
+    day: 'Day4',
+    temp: 28,
+    forecastConditions: 'Cloudy'
+  },
+  {
+    day: 'Day5',
+    temp: 28,
+    forecastConditions: 'Rainy'
   }
 ]
 };
