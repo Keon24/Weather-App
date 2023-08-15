@@ -42,13 +42,20 @@ forecast: [
 ]
 };
 
+//Function to update weather data
 function updateWeatherData (weatherData) {
 
 locationNameElement.textContent = weatherData.location;
-temperatureElement.textContent = weatherData.temperature;
+temperatureElement.textContent = weatherData.temperature + '°C';
 weatherConditionsElement.textContent = weatherData.conditions;
-forecastTempElement.textContent = weatherData.forecast[0].temp;
-forecastTempElement.textContent = weatherData.forecast[0].forecastConditions;
+
+forecastTempElements.forEach((element, index) => {
+    element.textContent = weatherData.forecast[index].temp + '°C';
+});
+forecastConditionsElements.forEach((element, index) => {
+    element.textContent= weatherData.forecast[index].forecastConditions;
+});
+
 errorElement.textContent = '';
 }
 
@@ -59,12 +66,14 @@ errorElement.textContent = '';
 
 //Make a get request
 
-//Add event listeners
-//Handle the api request
-//Extract relevant weather data from api repsomse 
-//Convert temperature umits amd format the data
-//Display the temperature weather conditions icons
+
 //Implement error hamdlimg where the API request fails
-//Update the UI tp display error messages
+
+//Add event for fetch button
+
+//Add event listener for unit toggle button
+
+//function to convert temperature units and format data
+
 //Implement Users geolocation 
-//Use the geolocation API to to obtain coordinats and make an API request 
+
