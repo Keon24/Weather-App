@@ -62,6 +62,11 @@ errorElement.textContent = '';
 
 
  //Fetch weather data from API
+function fetcheatherData (location){
+  const apiKey = b0c7b37d3059bd769e201b648f67214b;
+  const apiUrl = `https://home.openweathermap.org/api_keys`
+}
+ 
 
 
 //Make a get request
