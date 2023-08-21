@@ -62,16 +62,35 @@ errorElement.textContent = '';
 
 
  //Fetch weather data from API
-function fetcheatherData (location){
+function fetchWeatherData (location){
   const apiKey = b0c7b37d3059bd769e201b648f67214b;
   const apiUrl = `https://home.openweathermap.org/api_keys`
+//Get request
+fetch (apiUrl)
+.then((response) => {
+  if(!response.ok) {
+    throw new Error('Netwok response was not ok');
+  }
+  return response.json();
+  
+})
+.then((data) => {
+  const updateWeatherData = {
+    location: data.main,
+    temperature: data.main. temp,
+    conditons: data.weather[0].description,
+    forecast: weatherData.forecast,
+  };
+  updateWeatherData(updateWeatherData);
+
+})
+.catch((error) => { 
+  console.error('Error fetching data:', error);
+  errorElement.textContent = 'An error occurred while fetching the weather data.';
+});
+
 }
  
-
-
-//Make a get request
-
-
 //Implement error hamdlimg where the API request fails
 
 //Add event for fetch button
