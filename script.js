@@ -84,6 +84,7 @@ fetch (apiUrl)
   updateWeatherData(updateWeatherData);
 
 })
+//Implement error hamdlimg where the API request fails
 .catch((error) => { 
   console.error('Error fetching data:', error);
   errorElement.textContent = 'An error occurred while fetching the weather data.';
@@ -91,9 +92,15 @@ fetch (apiUrl)
 
 }
  
-//Implement error hamdlimg where the API request fails
+
 
 //Add event for fetch button
+fetchButton.addEventListener(click, () => {
+  const location = prompt('Enter a location:');
+  if (location){
+    fetchWeatherData(location)
+  }
+  });
 
 //Add event listener for unit toggle button
 
