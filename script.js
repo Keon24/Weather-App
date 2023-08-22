@@ -103,6 +103,9 @@ fetchButton.addEventListener(click, () => {
   });
 
 //Add event listener for unit toggle button
+unitToggle.addEventListener(click, () => {
+
+});
 
 //function to convert temperature units and format data
 
