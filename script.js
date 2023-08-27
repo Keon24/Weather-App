@@ -1,9 +1,9 @@
 //Use Dom manipulation to update the html elements
-const locationNameElement = document.getElementById('#location-name');
-const temperatureElement = document.getElementById('#temperature');
-const weatherConditionsElement = document.getElementById('#weather-conditions');
+const locationNameElement = document.getElementById('location-name');
+const temperatureElement = document.getElementById('temperature');
+const weatherConditionsElement = document.getElementById('weather-conditions');
 const forecastTempElements = document.querySelectorAll('.forecast-temp');
-const forecastConditionsElement = document.querySelectorA('.forecast-conditions');
+const forecastConditionsElement = document.querySelectorAll('.forecast-conditions');
 const errorElement = document.getElementById('error-message');
 const fetchButton = document.getElementById('search-button');
 const unitToggle = document.getElementById('unit-toggle');
@@ -41,6 +41,19 @@ forecast: [
   }
 ]
 };
+//function to convert temperature units and format data
+function convertAndFormatTemperature(tempInCelsius, toFahrenheit = false) {
+
+  let temperature;
+  if (toFahrenheit) {
+    temperature =(tempInCelsius * 9) / 5 +32;
+    temperature = temperature.toFixed(2) + '°F';
+   
+    }else{
+      temperature = tempInCelsius.toFixed(2) + '°C';
+    }
+    return temperature;2
+}
 
 //Function to update weather data
 function updateWeatherData (weatherData) {
@@ -95,7 +108,7 @@ fetch (apiUrl)
 
 
 //Add event for fetch button
-fetchButton.addEventListener(click, () => {
+fetchButton.addEventListener('click', () => {
   const location = prompt('Enter a location:');
   if (location){
     fetchWeatherData(location)
@@ -107,7 +120,19 @@ unitToggle.addEventListener(click, () => {
 
 });
 
-//function to convert temperature units and format data
+
 
 //Implement Users geolocation 
+function curSucess(pos){
+  console.log(pos)
+}
+
+function curError(err) {
+  console.log(`Error: ${err.code} ${err.message}`);
+}
+
+const options = {};
+
+navigatior.geolocation = getCurrentPosition(curSuccess, curError, options);
+
 
