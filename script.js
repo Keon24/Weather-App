@@ -116,23 +116,41 @@ fetchButton.addEventListener('click', () => {
   });
 
 //Add event listener for unit toggle button
-unitToggle.addEventListener(click, () => {
+unitToggle.addEventListener('click', () => {
 
 });
 
 
 
 //Implement Users geolocation 
-function curSucess(pos){
-  console.log(pos)
+const target = {
+  latitude: 4.3874387,
+  longitude:  -71.394839
 }
 
-function curError(err) {
+
+function watchSuccess(pos) {
+  const coords = pos.coords;
+  console.log(coords);
+
+  if (target.latitude === coords.latitude && target.longitude === 
+    coords.longitude) {
+    console.log('You have reached your destination');
+    navigator.geolocation.clearWatch(id);
+    }
+}
+
+function watchError(err) {
   console.log(`Error: ${err.code} ${err.message}`);
 }
 
-const options = {};
+const watchOptions = {
+  enableHighAccuracy: true, //Use GPS if available
+  timeout: 5000, //Time to wait to stop trying for loaction
+  maximumAge: 0 // Do not use cached position
+};
 
-navigatior.geolocation = getCurrentPosition(curSuccess, curError, options);
+ const id = navigator.geolocation.watchPosition(watchSuccess, 
+  watchError, watchOptions);
 
 
