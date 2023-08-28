@@ -88,13 +88,13 @@ fetch (apiUrl)
   
 })
 .then((data) => {
-  const updateWeatherData = {
+  const fetchedWeatherData = {
     location: data.main,
     temperature: data.main. temp,
     conditons: data.weather[0].description,
     forecast: weatherData.forecast,
   };
-  updateWeatherData(updateWeatherData);
+  updateWeatherData(fetchedWeatherData);
 
 })
 //Implement error hamdlimg where the API request fails
