@@ -10,7 +10,7 @@ const unitToggle = document.getElementById('unit-toggle');
 
 
 const weatherData = {
-locatiion: 'New York',
+location: 'New York',
 temperature: 25,
 conditions: 'Sunny',
 forecast: [
@@ -65,7 +65,7 @@ weatherConditionsElement.textContent = weatherData.conditions;
 forecastTempElements.forEach((element, index) => {
     element.textContent = weatherData.forecast[index].temp + '°C';
 });
-forecastConditionsElements.forEach((element, index) => {
+forecastConditionsElement.forEach((element, index) => {
     element.textContent= weatherData.forecast[index].forecastConditions;
 });
 
@@ -107,7 +107,7 @@ fetch (apiUrl)
  
 
 
-//Add event for fetch button
+// Add event for fetch button
 fetchButton.addEventListener('click', () => {
   const location = prompt('Enter a location:');
   if (location){
@@ -118,6 +118,25 @@ fetchButton.addEventListener('click', () => {
 //Add event listener for unit toggle button
 unitToggle.addEventListener('click', () => {
 
+// Get the temperature value
+const currentTemperature = parseFloat(temperatureElement.textContent);
+
+// Check if the temperature is in celsius
+const isCelsius = temperatureElement.textContent.includes('°C');
+
+// Convert and format the temperature based on the current unit
+let newTemperature 
+
+if(isCelsius) {
+// switch to Fahrenheit 
+newTemperature = convertAndFormatTemperature(currentTemperature, true)
+} else {
+  // Switch to celsius
+ newTemperature = convertAndFormatTemperature(currentTemperature, false);
+
+// Update the temperature element with the new value
+temperatureElement.textContent = newTemperature;
+}
 });
 
 
