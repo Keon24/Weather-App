@@ -10,6 +10,12 @@ body {
     font-family: Arial, sans-serif;
 }
 /* Header styles */
+header {
+    background-color: #007bff;
+    padding: 1rem;
+    color: #fff;
+    text-align:center
+}
 
 /* Logo styles */
 /* Main content styles */
