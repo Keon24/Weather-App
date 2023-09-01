@@ -19,10 +19,10 @@ header {
 
 /* Logo styles */
 /* Main content styles */
-main{
+main {
     max-width: 800px;
-    margin: 0;
-    padding: 0;
+    margin: 0 auto;
+    padding: 2rem;
 }
 /* Search form styles */
 /* Search input field styles */
