@@ -5,7 +5,12 @@
     box-sizing: border-box;
 }
 /* Global styles for the entire page */
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
 /* Header styles */
+
 /* Logo styles */
 /* Main content styles */
 /* Search form styles */
