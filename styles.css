@@ -65,11 +65,14 @@ main {
 
 /* Temperature styles */
 #temperature {
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: bold;
     color: #ff5733
 }
 /* Weather conditions styles */
+#weather-conditions {
+   margin-top: 20px;
+}
 /* Forecast section styles */
 /* Forecast list styles */
 /* Individual forecast day styles */
