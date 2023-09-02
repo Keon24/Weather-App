@@ -36,7 +36,15 @@ main {
   box-shadow: 0 0 5px rgba(0,123, 255, 0.5);
 }
 /* Search button styles */
+#search-button {
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    border-radius: 10px;
+    cursor: pointer;
 
+}
 
 /* Error message styles */
 /* Current weather section styles */
