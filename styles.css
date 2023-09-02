@@ -51,9 +51,16 @@ main {
     color: #ff0000;
     font-size: 14px;
     margin-top: 5px;
-    
+
 }
 /* Current weather section styles */
+.current-weather {
+    background-color: #f5f5f5;
+    padding: 20px;
+    margin-top: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 /* Location name styles */
 /* Temperature styles */
 /* Weather conditions styles */
