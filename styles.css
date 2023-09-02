@@ -47,6 +47,12 @@ main {
 }
 
 /* Error message styles */
+.error-message {
+    color: #ff0000;
+    font-size: 14px;
+    margin-top: 5px;
+    
+}
 /* Current weather section styles */
 /* Location name styles */
 /* Temperature styles */
