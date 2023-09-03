@@ -89,6 +89,13 @@ main {
     padding: 0;
 }
 /* Individual forecast day styles */
+.forecast-day {
+    flex-basis: calc(20% - 10px);
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 /* Forecast temperature styles */
 /* Forecast conditions styles */
 /* Unit toggle button styles */
