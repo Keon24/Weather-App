@@ -124,12 +124,32 @@ main {
 footer {
     background-color: #007bff;
     color: #fff;
-    text-align:center;
+    text-align: center;
     padding: 10px 0;
 }
 /* Copyright text styles */
+
 /* Media queries for responsive design */
+body {
+    font-size: 16px;
+}
+/* Mobile devices */
+@media (max-width:767px) {
+    body{
+        font-size: 14px;
+    }
+}
+/*Tablet devices*/
+@media (min-width: 768px) and (max-width: 1023px) {
+    body {
+        font-size: 18px
+    }
+}
 
-
-
+/* Desktop devices */ 
+@media (min-width: 1024px) {
+    body {
+        font-size: 20px;
+    }
+}
 
