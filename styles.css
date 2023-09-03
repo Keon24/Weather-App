@@ -74,7 +74,20 @@ main {
    margin-top: 20px;
 }
 /* Forecast section styles */
+.forecast-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 /* Forecast list styles */
+.forecast-list {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
 /* Individual forecast day styles */
 /* Forecast temperature styles */
 /* Forecast conditions styles */
