@@ -97,9 +97,20 @@ main {
     border-radius: 5px;
 }
 /* Forecast temperature styles */
+.forecast-temperature {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+   
+}
 /* Forecast conditions styles */
+.forecast-conditions {
+    font-size: 14px;
+    color: #666;
+}
 /* Unit toggle button styles */
-/* Footer styles */
+
+/* Footer styles *s/
 /* Copyright text styles */
 /* Media queries for responsive design */
 
