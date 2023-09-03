@@ -1,4 +1,5 @@
 //Use Dom manipulation to update the html elements
+document.addEventListener('DOMContentLoaded' , () => {
 const locationNameElement = document.getElementById('location-name');
 const temperatureElement = document.getElementById('temperature');
 const weatherConditionsElement = document.getElementById('weather-conditions');
@@ -52,7 +53,7 @@ function convertAndFormatTemperature(tempInCelsius, toFahrenheit = false) {
     }else{
       temperature = tempInCelsius.toFixed(2) + '°C';
     }
-    return temperature;2
+    return temperature;
 }
 
 //Function to update weather data
@@ -125,11 +126,11 @@ const currentTemperature = parseFloat(temperatureElement.textContent);
 const isCelsius = temperatureElement.textContent.includes('°C');
 
 // Convert and format the temperature based on the current unit
-let newTemperature 
+let newTemperature; 
 
-if(isCelsius) {
+if (isCelsius) {
 // switch to Fahrenheit 
-newTemperature = convertAndFormatTemperature(currentTemperature, true)
+newTemperature = convertAndFormatTemperature(currentTemperature, true);
 } else {
   // Switch to celsius
  newTemperature = convertAndFormatTemperature(currentTemperature, false);
@@ -171,5 +172,5 @@ const watchOptions = {
 
  const id = navigator.geolocation.watchPosition(watchSuccess, 
   watchError, watchOptions);
-
+ });
 
