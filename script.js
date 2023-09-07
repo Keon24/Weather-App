@@ -13,10 +13,14 @@ const unitToggle = document.getElementById('unit-toggle');
 // Check if geolocation is available in the browser
 if("geolocation" in navigator) {
   // Request permission for geolocation
-  navigator.geolocation.getCurrentPosition(functiom(position))
+  navigator.geolocation.getCurrentPosition(function(position) {
+    // Extract latitude and longitude from the position object
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.latitude;
+  }) 
 }
-  // Request permission for geolocation
-  // Extract latitude and longitude from the position object
+  
+ 
 
 const weatherData = {
 location: 'New York',
