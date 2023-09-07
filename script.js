@@ -1,14 +1,22 @@
+
 //Use Dom manipulation to update the html elements
 document.addEventListener('DOMContentLoaded' , () => {
 const locationNameElement = document.getElementById('location-name');
 const temperatureElement = document.getElementById('temperature');
 const weatherConditionsElement = document.getElementById('weather-conditions');
-const forecastTempElements = document.querySelectorAll('.forecast-temp');
+const forecastTempElements = document.querySelectorAll('.forecast-temperature');
 const forecastConditionsElement = document.querySelectorAll('.forecast-conditions');
 const errorElement = document.getElementById('error-message');
 const fetchButton = document.getElementById('search-button');
 const unitToggle = document.getElementById('unit-toggle');
 
+// Check if geolocation is available in the browser
+if("geolocation" in navigator) {
+  // Request permission for geolocation
+  navigator.geolocation.getCurrentPosition(functiom(position))
+}
+  // Request permission for geolocation
+  // Extract latitude and longitude from the position object
 
 const weatherData = {
 location: 'New York',
@@ -42,6 +50,7 @@ forecast: [
   }
 ]
 };
+
 //function to convert temperature units and format data
 function convertAndFormatTemperature(tempInCelsius, toFahrenheit = false) {
 
@@ -77,8 +86,8 @@ errorElement.textContent = '';
 
  //Fetch weather data from API
 function fetchWeatherData (location){
-  const apiKey = b0c7b37d3059bd769e201b648f67214b;
-  const apiUrl = `https://home.openweathermap.org/api_keys`
+  const apiKey = f31ad2c3e7514cc226166e143c910723;
+  const apiUrl = `http://api.weatherstack.com/`
 //Get request
 fetch (apiUrl)
 .then((response) => {
