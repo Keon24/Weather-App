@@ -17,6 +17,9 @@ if("geolocation" in navigator) {
     // Extract latitude and longitude from the position object
     const latitude = position.coords.latitude;
     const longitude = position.coords.latitude;
+    console.log("Latitude: " + latitude);
+    console.log("Longitude: " + longitude);
+    
   }) 
 }
   
