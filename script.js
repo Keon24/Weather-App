@@ -19,8 +19,14 @@ if("geolocation" in navigator) {
     const longitude = position.coords.latitude;
     console.log("Latitude: " + latitude);
     console.log("Longitude: " + longitude);
-    
-  }) 
+   // update the weather data using the user's location
+   fetchWeatherData(latitude,longitude);
+  }, 
+  
+  
+  
+  
+  ) 
 }
   
  
