@@ -21,12 +21,23 @@ if("geolocation" in navigator) {
     console.log("Longitude: " + longitude);
    // update the weather data using the user's location
    fetchWeatherData(latitude,longitude);
-  }, 
-  
-  
-  
-  
-  ) 
+  }, function(error) {
+    //Handle errors
+    if(error.code === 1) {
+      console.error("User denied geolocation permission.");
+    }else if (error.code === 2) {
+      console.error("Unable to determine location. Please try again later");
+
+    }else if (error.code === 3) {
+      console.error("Geolocation information is temporarily unavailable");
+      
+    }else{
+      console.error("Error getting location: " + error.message);
+
+    }
+  }); 
+}else{
+  console.error("Geolocation is not available in the browser");
 }
   
  
@@ -98,9 +109,11 @@ errorElement.textContent = '';
 
 
  //Fetch weather data from API
-function fetchWeatherData (location){
-  const apiKey = f31ad2c3e7514cc226166e143c910723;
-  const apiUrl = `http://api.weatherstack.com/`
+function fetchWeatherData (latitude,longitude){
+  const apiKey = '475dbf9d96bf36b08c88f11b879383a8';
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}`;
+  //Use latitude and longitutde in the API request
+  const apiRequestUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}`;
 //Get request
 fetch (apiUrl)
 .then((response) => {
