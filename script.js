@@ -109,10 +109,15 @@ errorElement.textContent = '';
 
 
  //Fetch weather data from API
-function fetchWeatherData (latitude,longitude,locationName){
-   //Use latitude and longitutde in the API request
-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}`;
-//Get request
+function fetchWeatherData (latitude,longitude,locationName) {
+  let apiUrl ="";
+   // Use latitude and longitude if present, otherwise use location name
+   if (latitude && longitude) {
+   apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}`;
+   } else{
+    apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${locationName}&appid=${apikey}`;
+   } 
+   
 fetch (apiUrl)
 .then((response) => {
   if(!response.ok) {
