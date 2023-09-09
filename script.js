@@ -1,6 +1,4 @@
-
-
-
+const apikey = 'b0c7b37d3059bd769e201b648f67214b';
 //Use Dom manipulation to update the html elements
 document.addEventListener('DOMContentLoaded' , () => {
 const locationNameElement = document.getElementById('location-name');
