@@ -101,7 +101,7 @@ forecastTempElements.forEach((element, index) => {
     element.textContent = weatherData.forecast[index].temp + '°C';
 });
 forecastConditionsElement.forEach((element, index) => {
-    element.textContent= weatherData.forecast[index].forecastConditions;
+    element.textContent= weatherData.forecast[index].forecastConditionsElement;
 });
 
 errorElement.textContent = '';
