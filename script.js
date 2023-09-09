@@ -101,7 +101,7 @@ forecastTempElements.forEach((element, index) => {
     element.textContent = weatherData.forecast[index].temp + '°C';
 });
 forecastConditionsElement.forEach((element, index) => {
-    element.textContent= weatherData.forecast[index].forecastConditionsElement;
+    element.textContent = weatherData.forecast[index].forecastConditionsElement;
 });
 
 errorElement.textContent = '';
@@ -118,7 +118,7 @@ function fetchWeatherData (latitude,longitude,locationName) {
    } else{
     apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${locationName}&appid=${apikey}`;
    } 
-   
+   //Get request
 fetch (apiUrl)
 .then((response) => {
   if(!response.ok) {
@@ -127,17 +127,46 @@ fetch (apiUrl)
   return response.json();
   
 })
-.then((data) => {
-  const fetchedWeatherData = {
-    location: data.main,
-    temperature: data.main.temp,
-    conditons: data.weather[0].description,
-    forecast: [
+.then((currentWeatherData) => {
+  if (currentWeatherData.cod && currentWeatherData.cod === '404') {
+    throw new Error(
+      `${currentWeatherData.message}. Please enter a valid location`
+    );
+  }
 
-    ],
-  };
-  updateWeatherData(fetchedWeatherData);
+  let latitude = currentWeatherData.coord.lat;
+  let longitude= currentWeatherData.coord.lon;
+  let location = currentWeatherData.name;
+  //Fetch forcast data using latitude and longitude
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apikey}`;
 
+   fetch(apiUrl)
+   .then((response) => {
+    if(!response.ok){
+      throw new Error('Network response was not ok');
+    }
+    return response.json()
+   })
+   .then((forecastData) => {
+    const fetchedWeatherData = {
+      location: location,
+      temperature: convertAndFormatTemperature(currentWeatherData.main.temp),
+      conditons: currentWeatherData.weather[0].description,
+      forecast: [],
+    };
+    forecastData.list.forEach((timeData) => {
+    if(timeData.dt_txt.includes('12:00:00')) {
+      const dayForecast = {
+        temp:convertAndFormatTemperature(timeData.main.temp),
+        forecastConditions: timeData.weather[0].description,
+        day:timeData.dt_txt.split('')[0],
+      };
+      fetchedWeatherData.forecast.push(dayForecast);
+    }
+    });
+    updateWeatherData(fetchedWeatherData);
+   });
+    
 })
 //Implement error hamdlimg where the API request fails
 .catch((error) => { 
