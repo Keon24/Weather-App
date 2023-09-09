@@ -1,4 +1,6 @@
 
+
+
 //Use Dom manipulation to update the html elements
 document.addEventListener('DOMContentLoaded' , () => {
 const locationNameElement = document.getElementById('location-name');
@@ -16,7 +18,7 @@ if("geolocation" in navigator) {
   navigator.geolocation.getCurrentPosition(function(position) {
     // Extract latitude and longitude from the position object
     const latitude = position.coords.latitude;
-    const longitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
     console.log("Latitude: " + latitude);
     console.log("Longitude: " + longitude);
    // update the weather data using the user's location
@@ -110,10 +112,8 @@ errorElement.textContent = '';
 
  //Fetch weather data from API
 function fetchWeatherData (latitude,longitude){
-  const apiKey = '475dbf9d96bf36b08c88f11b879383a8';
+   //Use latitude and longitutde in the API request
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}`;
-  //Use latitude and longitutde in the API request
-  const apiRequestUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}`;
 //Get request
 fetch (apiUrl)
 .then((response) => {
@@ -126,9 +126,11 @@ fetch (apiUrl)
 .then((data) => {
   const fetchedWeatherData = {
     location: data.main,
-    temperature: data.main. temp,
+    temperature: data.main.temp,
     conditons: data.weather[0].description,
-    forecast: weatherData.forecast,
+    forecast: [
+
+    ],
   };
   updateWeatherData(fetchedWeatherData);
 
