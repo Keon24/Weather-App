@@ -109,7 +109,7 @@ errorElement.textContent = '';
 
 
  //Fetch weather data from API
-function fetchWeatherData (latitude,longitude){
+function fetchWeatherData (latitude,longitude,locationName){
    //Use latitude and longitutde in the API request
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}`;
 //Get request
