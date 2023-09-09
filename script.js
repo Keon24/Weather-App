@@ -17,27 +17,28 @@ if("geolocation" in navigator) {
     // Extract latitude and longitude from the position object
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
-    console.log("Latitude: " + latitude);
-    console.log("Longitude: " + longitude);
+   if(window.console) console.log('Latitude:'+ latitude);
+   if(window.console) console.log('Longitude'+ longitude);
+
    // update the weather data using the user's location
    fetchWeatherData(latitude,longitude);
-  }, function(error) {
+  }, 
+  function(error) {
     //Handle errors
     if(error.code === 1) {
-      console.error("User denied geolocation permission.");
+     if(window.console) console.error('User denied location permission')
     }else if (error.code === 2) {
-      console.error("Unable to determine location. Please try again later");
-
+     if(window.console) console.error('Unable to determine location. Please tryagain later');
     }else if (error.code === 3) {
-      console.error("Geolocation information is temporarily unavailable");
-      
-    }else{
-      console.error("Error getting location: " + error.message);
+     if(window.console) console.error('Geolocation information is temporary unavailable');
+       }else{
+      if(window.console)console.error('Error getting location:' + error.message);
 
     }
-  }); 
+  }
+  ); 
 }else{
-  console.error("Geolocation is not available in the browser");
+ if(window.console) console.error('Geolocation is not available in the browser');
 }
   
  
