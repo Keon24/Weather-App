@@ -180,9 +180,9 @@ fetch (apiUrl)
 
 // Add event for fetch button
 fetchButton.addEventListener('click', () => {
-  const location = prompt('Enter a location:');
+  const locationName = prompt('Enter a location:');
   if (location){
-    fetchWeatherData(location)
+    fetchWeatherData(undefined, undefined,locationName);
   }
   });
 
