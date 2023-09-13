@@ -29,6 +29,9 @@
           <div id="temperature">
             <h3>Temperature: <span id="temperature-value"> </span>C</h3>
             <button id="unit-toggle">Switch to Farenheit</button>
+            <span id="weather-icon-wrapper">
+              <img id="weather-icon" src="" alt="" />
+            </span>
           </div>
           <div id="conditions">
             <h3>Conditions: <span id="weather-conditions"> </span></h3>
@@ -36,39 +39,39 @@
         </div>
       </section>
       <section class="forecast-section">
-        <h2>Todays-Forecast</h2>
-        <ul class="forecast-list">
-          <li class="forecast-day">
-            <h3>Day1</h3>
-            <p>Temperature:<span class="forecast-temp"> </span>C</p>
-
-            <p>Conditions: <span class="forecast-conditions"></span></p>
-          </li>
-          <li class="forecast-day">
-            <h3>Day2</h3>
-            <p>Temperature:<span class="forecast-temp"> </span>C</p>
-
-            <p>Conditions: <span class="forecast-conditions"></span></p>
-          </li>
-          <li class="forecast-day">
-            <h3>Day3</h3>
-            <p>Temperature:<span class="forecast-temp"> </span>C</p>
-
-            <p>Conditions: <span class="forecast-conditions"></span></p>
-          </li>
-          <li class="forecast-day">
-            <h3>Day4</h3>
-            <p>Temperature:<span class="forecast-temp"> </span>C</p>
-
-            <p>Conditions: <span class="forecast-conditions"></span></p>
-          </li>
-          <li class="forecast-day">
-            <h3>Day5</h3>
-            <p>Temperature:<span class="forecast-temp"> </span>C</p>
-
-            <p>Conditions: <span class="forecast-conditions"></span></p>
-          </li>
-        </ul>
+        <h2>Forecast</h2>
+        <div class="forecast-items">
+          <div class="forecast-item">
+            <p class="day">Day 1</p>
+            <img class="weather-icon forecast-icon" src="#" alt="" />
+            <p class="forecast-temp"></p>
+            <p class="forecast-conditions"></p>
+          </div>
+          <div class="forecast-item">
+            <p class="day">Day 2</p>
+            <img class="weather-icon forecast-icon" src="#" alt="" />
+            <p class="forecast-temp"></p>
+            <p class="forecast-conditions"></p>
+          </div>
+          <div class="forecast-item">
+            <p class="day">Day 3</p>
+            <img class="weather-icon forecast-icon" src="#" alt="" />
+            <p class="forecast-temp"></p>
+            <p class="forecast-conditions"></p>
+          </div>
+          <div class="forecast-item">
+            <p class="day">Day 4</p>
+            <img class="weather-icon forecast-icon" src="#" alt="" />
+            <p class="forecast-temp"></p>
+            <p class="forecast-conditions"></p>
+          </div>
+          <div class="forecast-item">
+            <p class="day">Day 5</p>
+            <img class="weather-icon forecast-icon" src="#" alt="" />
+            <p class="forecast-temp"></p>
+            <p class="forecast-conditions"></p>
+          </div>
+        </div>
       </section>
     </main>
     <footer>
