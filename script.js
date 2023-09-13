@@ -1,10 +1,11 @@
 
 const apikey = 'b0c7b37d3059bd769e201b648f67214b';
-const BASE_Url = `https://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}&units=metric&q=`;
-const FORECAST_Url = `https://api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}&units=metric&q=`;
+ const BASE_Url = `https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=${apikey}&units=metric&q=`;
+ const FORECAST_Url = `https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=${apikey}&units=metric&q=`;
+
 
 //Use Dom manipulation to update the html elements
-document.addEventListener('DOMContentLoaded' , () => {
+document.addEventListener('DOMContentLoaded' , () => { 
 const locationNameElement = document.getElementById('location-name');
 const temperatureElement = document.getElementById('temperature');
 const weatherConditionsElement = document.getElementById('weather-conditions');
@@ -13,7 +14,7 @@ const forecastConditionsElement = document.querySelectorAll('.forecast-condition
 const errorElement = document.getElementById('error-message');
 const fetchButton = document.getElementById('search-button');
 const unitToggle = document.getElementById('unit-toggle');
-const weatherIconElement = doucument.getElementById('weather-icon');
+const weatherIconElement = document.getElementById('weather-icon');
 
 
 // Check if geolocation is available in the browser
@@ -103,29 +104,50 @@ locationNameElement.textContent = weatherData.location;
 temperatureElement.textContent = weatherData.temperature + '°C';
 weatherConditionsElement.textContent = weatherData.conditions;
 
+const currentIconCode = getIconCode(weatherData.conditions)
+const currentIconUrl =  `https://openweathermap.org/img/wn/${currentIconCode}.png`;
+weatherIconElement.src = currentIconUrl;
+
 forecastTempElements.forEach((element, index) => {
     element.textContent = weatherData.forecast[index].temp + '°C';
 });
 forecastConditionsElement.forEach((element, index) => {
-    element.textContent = weatherData.forecast[index].forecastConditionsElement;
+  const forecastIconCode = weatherData.forecast[index].iconCode;
+  const forecastIconUrl = `https://openweathermap.org/img/wn/${forecastIconCode}.png`;
+  element.textContent = weatherData.forecast[index].forecastConditions;
+  const forecastIconElement = element.previousElementSibling;
+  forecastIconElement.src = forecastIconUrl;
 });
-
 errorElement.textContent = '';
 }
 
-function getWeatherIcon(iconCode){
-  return `https://openweathermap.org/img/wn/10d@2x.png`;
+function getIconCode(icon) {
+  const iconMapping = {
+    'clear sky': '01d',
+    'few clouds': '02d',
+    'scattered clouds': '03d',
+    'broken clouds': '04d',
+    'shower rain': '09d',
+    'rain': '10d',
+    'thunderstorm': '11d',
+    'snow': '13d',
+    'mist': '50d',
+  }
+return iconMapping[icon];
 }
-
 
  //Fetch weather data from API
 function fetchWeatherData (latitude,longitude,locationName) {
-  let apiUrl ="";
+  let apiUrl;
    // Use latitude and longitude if present, otherwise use location name
    if (latitude && longitude) {
    apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}`;
+   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apikey}`;
+
    } else{
-    apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${locationName}&appid=${apikey}`;
+   apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${locationName}&appid=${apikey}`;
+
+   apiUrl = apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apikey}`;
    } 
    //Get request
 fetch (apiUrl)
@@ -165,10 +187,13 @@ fetch (apiUrl)
     };
     forecastData.list.forEach((timeData) => {
     if(timeData.dt_txt.includes('12:00:00')) {
+      const weatherCondition = timeData.weather[0].description;
+      const iconCode = getIconCode(weatherCondition)
       const dayForecast = {
         temp:convertAndFormatTemperature(timeData.main.temp),
-        forecastConditions: timeData.weather[0].description,
+        forecastConditions: weatherCondition,
         day:timeData.dt_txt.split('')[0],
+        iconCode: iconCode
       };
       fetchedWeatherData.forecast.push(dayForecast);
     }
