@@ -1,4 +1,8 @@
+
 const apikey = 'b0c7b37d3059bd769e201b648f67214b';
+const BASE_Url = `https://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}&units=metric&q=`;
+const FORECAST_Url = `https://api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}&units=metric&q=`;
+
 //Use Dom manipulation to update the html elements
 document.addEventListener('DOMContentLoaded' , () => {
 const locationNameElement = document.getElementById('location-name');
@@ -9,6 +13,8 @@ const forecastConditionsElement = document.querySelectorAll('.forecast-condition
 const errorElement = document.getElementById('error-message');
 const fetchButton = document.getElementById('search-button');
 const unitToggle = document.getElementById('unit-toggle');
+const weatherIconElement = doucument.getElementById('weather-icon');
+
 
 // Check if geolocation is available in the browser
 if("geolocation" in navigator) {
@@ -107,6 +113,9 @@ forecastConditionsElement.forEach((element, index) => {
 errorElement.textContent = '';
 }
 
+function getWeatherIcon(iconCode){
+  return `https://openweathermap.org/img/wn/10d@2x.png`;
+}
 
 
  //Fetch weather data from API
@@ -211,36 +220,5 @@ temperatureElement.textContent = newTemperature;
 });
 
 
-
-//Implement Users geolocation 
-const target = {
-  latitude: 4.3874387,
-  longitude:  -71.394839
-}
-
-
-function watchSuccess(pos) {
-  const coords = pos.coords;
-  console.log(coords);
-
-  if (target.latitude === coords.latitude && target.longitude === 
-    coords.longitude) {
-    console.log('You have reached your destination');
-    navigator.geolocation.clearWatch(id);
-    }
-}
-
-function watchError(err) {
-  console.log(`Error: ${err.code} ${err.message}`);
-}
-
-const watchOptions = {
-  enableHighAccuracy: true, //Use GPS if available
-  timeout: 5000, //Time to wait to stop trying for loaction
-  maximumAge: 0 // Do not use cached position
-};
-
- const id = navigator.geolocation.watchPosition(watchSuccess, 
-  watchError, watchOptions);
  });
 
