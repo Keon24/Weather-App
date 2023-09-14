@@ -1,4 +1,4 @@
-Title: Weather App
+[View Project](https://keon24.github.io/Weather-App/)
 
 This is a simple web app that displays weather data for the user's current location or a specified location. The app utilizes the OpenWeatherMap API to fetch current weather and 5-day forecast data. 
 
