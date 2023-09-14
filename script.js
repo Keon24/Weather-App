@@ -142,8 +142,7 @@ function fetchWeatherData (latitude,longitude,locationName) {
    // Use latitude and longitude if present, otherwise use location name
    if (latitude && longitude) {
    apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}`;
-   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apikey}`;
-
+   
    } else{
    apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${locationName}&appid=${apikey}`;
 
