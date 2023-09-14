@@ -90,12 +90,17 @@ main {
 
 }
 /* Individual forecast day styles */
-.forecast-day {
-    flex-basis: calc(20% - 10px);
-    padding: 10px;
-    text-align: center;
+.forecast-item {
+    text-align:center;
+    flex: 0 0 18%;
+    margin-bottom:30px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
+    padding: 20px 16px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    
+
+
 }
 /* Forecast temperature styles */
 .forecast-temperature {
